@@ -1,0 +1,49 @@
+name: pill_magician
+description: AI-powered pill classification mobile application
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Core dependencies
+  http: ^0.13.3
+  provider: ^5.0.0
+  shared_preferences: ^2.2.2
+  
+  # Security & Authentication
+  flutter_secure_storage: ^5.1.2
+  jwt_decode: ^0.3.1
+  
+  # UI Components
+  table_calendar: ^3.0.9
+  flutter_svg: 2.0.9
+  flutter_html: ^3.0.0-beta.2
+  cupertino_icons: ^1.0.2
+  
+  # Camera & Image Processing
+  image_picker: ^1.1.0
+  
+  # Notifications
+  flutter_local_notifications: ^16.2.0
+  
+  # Utilities
+  intl: ^0.18.1
+  path: ^1.8.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/imgs/
+    - assets/html/
