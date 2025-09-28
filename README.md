@@ -79,50 +79,7 @@
                              └─────────────┘
 ```
 
-### **3. Flutter 카메라 연동**
-```dart
-// 카메라/갤러리 이미지 선택 및 AI 분석 요청
-Future<void> classifyPill(File imageFile) async {
-    final response = await http.post(
-        Uri.parse('$baseUrl/ai/classify'),
-        headers: {'Content-Type': 'multipart/form-data'},
-        body: {'image': await MultipartFile.fromFile(imageFile.path)}
-    );
-    
-    final result = json.decode(response.body);
-    setState(() => _classificationResult = result);
-}
-```
 
-## 🚀 실행 방법
-
-### **환경 요구사항**
-- Node.js 16 이상
-- Python 3.8 이상
-- Flutter 3.0 이상
-- MySQL 8.0 이상
-
-### **백엔드 실행**
-```bash
-cd backend
-npm install
-node server.js
-# Server running on http://localhost:60003
-```
-
-### **AI 모델 실행**
-```bash
-cd ai
-pip install -r requirements.txt
-python inference/classify_yolov8.py models/yolov8_pill.pt sample_image.jpg
-```
-
-### **Flutter 앱 실행**
-```bash
-cd frontend
-flutter pub get
-flutter run
-```
 
 ## 📁 프로젝트 구조
 
