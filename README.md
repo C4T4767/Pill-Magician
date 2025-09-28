@@ -61,10 +61,6 @@
 | MobileNetV3 | 91.8% | ~150ms | 9MB |
 | ResNet101 | 96.1% | ~300ms | 170MB |
 
-### **시스템 성능**
-- **평균 응답 시간**: 300ms 이하
-- **동시 처리**: 50+ 요청 지원
-- **이미지 처리**: 5MB 파일 지원
 
 ## 🏗 시스템 아키텍처
 
@@ -81,42 +77,6 @@
           │  Database   │    │(YOLOv8/Mobile│   │    Server   │
           └─────────────┘    │   /ResNet)  │   └─────────────┘
                              └─────────────┘
-```
-
-## 💡 기술적 하이라이트
-
-### **1. YOLOv8 모델 추론**
-```python
-# YOLOv8 모델을 사용한 알약 분류
-from ultralytics import YOLO
-
-def classify_pill_yolov8(image_path):
-    model = YOLO('models/yolov8_pill.pt')
-    results = model(image_path)
-    
-    # 가장 높은 신뢰도의 결과 반환
-    if results and len(results[0].boxes) > 0:
-        confidence = float(results[0].boxes[0].conf[0])
-        class_id = int(results[0].boxes[0].cls[0])
-        return {'confidence': confidence, 'class_id': class_id}
-    return None
-```
-
-### **2. Node.js API 서버**
-```javascript
-// 이미지 업로드 및 AI 분류 API
-app.post('/ai/classify', upload.single('image'), async (req, res) => {
-    try {
-        const imagePath = req.file.path;
-        const model = req.body.model || 'yolov8';
-        
-        // Python 스크립트 실행
-        const result = await execPython(`classify_${model}.py`, imagePath);
-        res.json({ success: true, result });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 ```
 
 ### **3. Flutter 카메라 연동**
